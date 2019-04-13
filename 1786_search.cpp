@@ -5,40 +5,6 @@
 const int MOD = 1000000;
 
 /*
-unsigned long hash_5381(const char* str, int start, int size)
-{
-	unsigned long hash = 5381;
-	int c;
-
-	int pos = start;
-	str = str + start;
-
-	while (pos < start + size)
-	{
-		c = *str++;
-		hash = (((hash << 5) + hash) + c) % MOD;
-		pos++;
-	}
-	return hash % MOD;
-}
-
-unsigned long hash_5387(const char* str, int start, int size)
-{
-	unsigned long hash = 9679;
-	int c;
-
-	int pos = start;
-	str = str + start;
-
-	while (pos < start + size)
-	{
-		c = *str++;
-		hash = (((hash << 5) + hash) + c) % MOD;
-		pos++;
-	}
-
-	return hash % MOD;
-}
 
 bool myStrcmp(const char* str1, int pos1, const char* str2, int pos2, int len)
 {
@@ -54,6 +20,45 @@ bool myStrcmp(const char* str1, int pos1, const char* str2, int pos2, int len)
 	}
 
 	return true;
+}
+*/
+
+/*
+static unsigned long hash_5381(const char* str, int start, int size)
+{
+	static unsigned long hash = 5381;
+	static int c;
+	static int pos;
+
+	pos = start;
+	str = str + start;
+
+	while (pos < start + size)
+	{
+		c = *str++;
+		hash = (((hash << 5) + hash) + c) % MOD;
+		pos++;
+	}
+	return hash % MOD;
+}
+
+static unsigned long hash_5387(const char* str, int start, int size)
+{
+	static unsigned long hash = 9679;
+	static int c;
+	static int pos;
+
+	pos = start;
+	str = str + start;
+
+	while (pos < start + size)
+	{
+		c = *str++;
+		hash = (((hash << 5) + hash) + c) % MOD;
+		pos++;
+	}
+
+	return hash % MOD;
 }
 */
 
@@ -149,7 +154,12 @@ int main()
 			continue;
 		}
 
-		//if (pattern_hash_5381 == hash_5381(text, text_cur, p_size) && pattern_hash_5387 == hash_5387(text, text_cur, p_size))
+		/*if (pattern_hash_5381 == hash_5381(text, text_cur, p_size) && pattern_hash_5387 == hash_5387(text, text_cur, p_size))
+		{
+			pos_arr[times] = text_cur;
+			times++;
+		}*/
+		
 		hash_5381_5387(text, text_cur, p_size, ret1, ret2);
 		if (ret1 == pattern_hash_5381 && ret2 == pattern_hash_5387)
 		{
