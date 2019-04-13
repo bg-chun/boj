@@ -146,6 +146,7 @@ int main()
 	// compare
 	static int text_cur = 0;
 	static bool check = false;
+	static int i = 0;
 	while (text[text_cur] != 0 && text_cur + p_size < 1000010)
 	{
 		if (text[text_cur] != pattern[0])
@@ -189,7 +190,7 @@ int main()
 
 
 	std::cout << times << std::endl;
-	for (int i = 0; i < times; i++)
+	for (i = 0; i < times; i++)
 	{
 		std::cout << pos_arr[i] + 1 << " ";
 
