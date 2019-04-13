@@ -140,6 +140,7 @@ int main()
 
 	// compare
 	static int text_cur = 0;
+	static bool check = false;
 	while (text[text_cur] != 0 && text_cur + p_size < 1000010)
 	{
 		if (text[text_cur] != pattern[0])
@@ -154,38 +155,35 @@ int main()
 		{
 			pos_arr[times] = text_cur;
 			times++;
+		}
 
-			//일치하였다면 시작점과 패턴길이내에서 다음시작점으로 건너뛴다
-			for (int i = text_cur+1; i < text_cur + p_size; i++)
+		//시작점과 패턴길이내에서 다음시작점으로 건너뛴다
+		check = false;
+		for (int i = text_cur + 1; i < text_cur + p_size; i++)
+		{
+			if (text[i] == pattern[0])
 			{
-				if (text[i] == pattern[0])
-				{
-					text_cur = i;
-					continue;
-				}
+				text_cur = i;
+				check = true;
+				break;
 			}
+		}
+
+		if (check)
+		{
+			continue;
 		}
 
 		text_cur++;
 	}
 
 
-	//std::cout << times << std::endl;
-	printf("%d\n", times);
-
+	std::cout << times << std::endl;
 	for (int i = 0; i < times; i++)
 	{
-		//std::cout << pos_arr[i] + 1;
-		//printf("%d ", pos_arr[i] + 1);
 		std::cout << pos_arr[i] + 1 << " ";
 
-		//if (i < times - 1)
-		//{
-		//	std::cout << " ";
-		//}
-
 	}
-	//std::cout << std::endl;
 
 	return 0;
 }
