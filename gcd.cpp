@@ -29,3 +29,10 @@ int main()
 {
     int a = 64;
     int b = 12;
+    
+    std::cout << gcd_reculsive(a, b) << std::endl;
+    
+    std::cout << gcd_non_reculsive(a, b) << std::endl;
+    
+    return 0;
+}
