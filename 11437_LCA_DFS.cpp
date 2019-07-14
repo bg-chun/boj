@@ -79,19 +79,21 @@ void dfs_calc(int pid, int id, int depth)
 
 	return;
 }
-
-
+static int N, M, a, b;
+static vector* tmpV;
 int main()
 {
-	int N = 0;
-	std::cin >> N;
-	int a, b;
-	vector* tmpV;
+	//std::cin >> N;
+	scanf("%d", &N);
+	
+	
 
-	for (int i = 1; i < N; i++)
+	for (register int i = 1; i < N; i++)
 	{
-		std::cin >> a;
-		std::cin >> b;
+		//std::cin >> a;
+		//std::cin >> b;
+		scanf("%d", &a);
+		scanf("%d", &b);
 
 		if (workspace.vectors[a] == 0)
 		{
@@ -122,13 +124,15 @@ int main()
 
 
 
-	int M = 0;
+	M = 0;
 	std::cin >> M;
 
-	for (int i = 0; i < M; i++)
+	for (register int i = 0; i < M; i++)
 	{
-		std::cin >> a;
-		std::cin >> b;
+		//std::cin >> a;
+		//std::cin >> b;
+		scanf("%d", &a);
+		scanf("%d", &b);
 		printf("%d\n", LCA(a, b));
 	}
 
